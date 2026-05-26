@@ -1,0 +1,76 @@
+# macOS
+.DS_Store
+
+# Node.js dependencies
+node_modules/
+**/node_modules/
+**/node_modules/**
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Runtime files
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+.eslintcache
+
+# Build output
+dist/
+**/dist/
+build/
+**/build/
+.out/
+.cache/
+
+# TypeScript
+*.tsbuildinfo
+
+# Vite
+/.vite/
+**/.vite/
+
+# Rspack / others
+/.rspack/
+**/.rspack/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDEs and editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Misc
+.DS_Store
+Thumbs.db
+
+# Generated typings
+**/*.d.ts
+!**/src/**/*.d.ts
+!**/types/**/*.d.ts
+
+# Storybook
+storybook-static/
+
+# Coverage
+coverage/
+**/coverage/
