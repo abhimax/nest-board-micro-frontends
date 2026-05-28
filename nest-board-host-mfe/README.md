@@ -1,117 +1,180 @@
-Here’s a polished and more structured version of your README.md with better readability, consistent formatting, and small enhancements:
-
 # NestBoard Frontend
 
-**NestBoard** is a co-living space booking platform that allows users to **explore, book, and manage properties** such as **apartments**, **villas**, and **houses**. It provides a clean, user-friendly interface for discovering available spaces, filtering by city and price, viewing detailed property information, and making bookings seamlessly.
+**NestBoard** is a co-living space booking platform that allows users to **explore, book, and manage properties** such as **apartments**, **villas**, and **houses**.
+
+This application now follows a **Micro-Frontend Architecture** using **Vite Module Federation**.
+
+This repository represents the **Shell / Host Application** of the NestBoard frontend ecosystem.
+
 ![NESTBOARD!](public/nest-board-readme-res.jpg)
 
 ---
 
-### User-Facing Features
+# Micro-Frontend Architecture
 
-- **Home Page**: Browse a list of available properties with advanced filtering options such as location, price range, and property type.
-- **Property Detail Page**: View detailed information about properties, including available rooms, pricing, facilities, and images.
+NestBoard frontend is structured using a **Shell + Remote Micro-Frontend** architecture.
+
+## Shell Application (This Repository)
+
+The shell application is responsible for:
+
+- Main application layout
+- Routing
+- Authentication
+- Global state management
+- Shared UI structure
+- Loading remote micro-frontends dynamically
+
+## Remote Micro-Frontend
+
+The shell application integrates a remote micro-frontend:
+
+| Micro-Frontend   | Responsibility                                      |
+| ---------------- | --------------------------------------------------- |
+| `map-remote-mfe` | Property map visualization and map-related features |
+
+The remote application is dynamically loaded into the shell using the **Vite Module Federation Plugin**.
+
+---
+
+# User-Facing Features
+
+- **Home Page**: Browse a list of available properties with filtering options such as location, price range, and property type.
+- **Property Detail Page**: View detailed property information including rooms, pricing, facilities, and images.
 - **Bookings**: Reserve rooms directly from the property detail page and manage existing bookings.
-- **User Profile**: Manage personal details, view booking history, and save favorite properties for quick access.
-- **Dynamic Theme Switching**: The UI adapts dynamically based on the user type (normal user or admin).
+- **User Profile**: Manage personal details, booking history, and saved properties.
+- **Map Integration**: View property locations using the remote Map Micro-Frontend.
+- **Dynamic Theme Switching**: UI adapts based on user roles.
 
-### Admin Features
+---
 
-- **Admin Dashboard**: Manage all properties and users in one centralized dashboard.
-- **Add/Edit/Delete Properties**: Create new listings, update property details, and remove listings as needed.
-- **Room Management**: Manage room availability, pricing, and details for each property.
-- **User Management**: View registered users, assign roles, and manage access permissions.
-- **Admin-Specific Theme**: A distinct interface for admins that visually separates admin functionalities from the user-facing application.
+# Admin Features
 
-## User Roles
+- **Admin Dashboard**
+- **Add/Edit/Delete Properties**
+- **Room Management**
+- **User Management**
+- **Admin-Specific Theme**
 
-- **Normal User**: Can browse properties, view property details, make bookings, and manage personal profile.
-- **Admin User**: Has full access to CRUD (Create, Read, Update, Delete) operations for properties and rooms, as well as user management capabilities.
+---
 
-## Technology Stack
+# User Roles
 
-- **Frontend**:
-  - **React with TypeScript** – Core framework for building the UI with type safety.
-  - **Vite v2** – Development and build tool for fast bundling and hot module replacement.
-  - **ChatCN UI** – Component library used for prebuilt UI components.
-  - **Tailwind CSS** – Utility-first CSS framework for styling.
-  - **TanStack Query** – For data fetching, caching, and server state management.
-  - **Zustand** – Global state management solution for React.
-  - **React Router** – Handles client-side routing.
-  - **Clerk** – Authentication and authorization management for user login and roles.
+## Normal User
 
-- **Backend**:
-  - **Node.js** – Runtime environment for the backend server.
-  - **Express.js** – Web framework to handle API routes and server logic.
-  - **Dummy Backend** – Simulated backend for development and testing purposes.
+- Browse properties
+- View property details
+- Make bookings
+- Manage personal profile
 
-## Getting Started
+## Admin User
 
-Follow these steps to run NestBoard locally:
+- Full CRUD access
+- Property and room management
+- User management capabilities
 
-### 1. Clone the repository
+---
+
+# Technology Stack
+
+## Frontend
+
+- **React with TypeScript**
+- **Vite**
+- **Vite Module Federation Plugin**
+- **shadcn/ui**
+- **Tailwind CSS**
+- **TanStack Query**
+- **Zustand**
+- **React Router**
+- **Clerk Authentication**
+
+## Backend
+
+- **Node.js**
+- **Express.js**
+- **Dummy Backend API**
+
+---
+
+# Getting Started
+
+Follow these steps to run NestBoard locally.
+
+---
+
+## 1. Clone the Repository
 
 ```bash
-git clone https://github.com/abhimax/nest-board-fe
-cd nestboard
-```
-
-### 2. Install Dependencies
-
-```bash
+git clone git@github.com:abhimax/nest-board-micro-frontends.git
+cd nest-board-host-mfe
+2. Install Dependencies
 npm install
-```
-
-### 3. Start the Development Server
-
-```bash
+3. Start the Shell Application
 npm run dev
-```
 
-The app will be available at http://localhost:5183 (or the port shown in the terminal).
+The shell application will run on:
 
-### 4. Build for Production
+http://localhost:5183
+Running the Remote Map MFE
 
-```bash
-npm run build
-```
+The shell application depends on the map-remote-mfe application for map-related functionality.
 
-This will create an optimized production build in the dist/ folder.
+Make sure the remote micro-frontend is also running.
 
-# API Simulation
+Example:
 
-**Repository**: https://github.com/abhimax/nest-board-api
-
-### 1. **Clone the Backend Repository**
-
-```bash
-git clone <backend-repo-url>
-```
-
-### 2. **got to project folder**
-
-```bash
-cd <backend-folder>
-```
-
-### 3. **install dependencies**
-
-```bash
+cd map-remote-mfe
 npm install
-```
+npm run build
+npm run preview
 
-### 4. **Start the server**
+Example remote application URL:
 
-```bash
+http://localhost:5184
+Module Federation Integration
+
+The shell application dynamically loads remote modules at runtime using the Vite Module Federation Plugin.
+
+Architecture flow:
+
+Shell Application (Host)
+        ↓
+Loads remoteEntry.js
+        ↓
+Map Remote MFE
+        ↓
+Renders Map Feature
+
+Benefits of this architecture:
+
+Independent feature development
+Better scalability
+Faster deployments
+Team ownership separation
+Lazy-loaded frontend modules
+Build for Production
+npm run build
+
+This will create an optimized production build inside the dist/ folder.
+
+API Simulation
+
+Repository:
+https://github.com/abhimax/nest-board-api
+
+1. Clone the Backend Repository
+git clone <backend-repo-url>
+2. Go to the Project Folder
+cd <backend-folder>
+3. Install Dependencies
+npm install
+4. Start the Backend Server
 npm start
+Available API Endpoints
+GET /properties
+GET /properties/:id
+POST /properties
+PUT /properties/:id
+DELETE /properties/:id
 ```
-
-## Available API Endpoints:
-
-- GET /properties – List all properties.
-- GET /properties/:id – Get property details.
-- POST /properties – Add a new property.
-- PUT /properties/:id – Edit an existing property.
-- DELETE /properties/:id – Delete a property.
-
-⚠️ This backend is required to run the frontend application properly.
