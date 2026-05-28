@@ -1,5 +1,6 @@
 # NestBoard Micro-Frontends
 
+![NESTBOARD!](nest-board-host-mfe/public/nest-board-readme-res.png)
 This repository contains the full NestBoard micro-frontend ecosystem, including:
 
 - `nest-board-api` — backend API server used by both frontend applications
@@ -93,6 +94,7 @@ If this key is missing, the host app will fail to start with:
 CLERK_PUBLISHABLE_KEY is not defined in environment variables
 ```
 
+![NESTBOARD!](nest-board-host-mfe/public/clerk-auth-info.png)
 Use the registered credentials to sign in and access the protected dashboard/admin features.
 
 ## Step 3: Run the Host Micro-Frontend Application
