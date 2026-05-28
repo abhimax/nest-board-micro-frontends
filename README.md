@@ -74,6 +74,27 @@ The remote app is responsible for:
 - reusable map modules consumed by the host
 - dynamic runtime exposure via `remoteEntry.js`
 
+## Step 2.5: Configure Clerk Authentication for the Host
+
+The host app uses Clerk for login and authorization. To enable protected features such as the dashboard and admin pages, you must register a Clerk application and provide a publishable key.
+
+1. Visit https://clerk.com and sign up for an account.
+2. Create a new Clerk application or project.
+3. Register at least two users: a normal user and an admin user.
+4. In `nest-board-host-mfe/`, create a `.env` file with:
+
+```bash
+VITE_CLERK_PUBLISHABLE_KEY=your_publishable_key_here
+```
+
+If this key is missing, the host app will fail to start with:
+
+```bash
+CLERK_PUBLISHABLE_KEY is not defined in environment variables
+```
+
+Use the registered credentials to sign in and access the protected dashboard/admin features.
+
 ## Step 3: Run the Host Micro-Frontend Application
 
 Open a third terminal and run:

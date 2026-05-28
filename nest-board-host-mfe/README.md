@@ -103,47 +103,69 @@ Follow these steps to run NestBoard locally.
 
 ---
 
-## 1. Clone the Repository
+## 1. Configure Clerk Authentication
+
+The host app requires Clerk authentication for protected routes such as the dashboard and admin pages.
+
+1. Visit https://clerk.com and sign up.
+2. Create a new Clerk application/project.
+3. Register at least two users: a normal user and an admin user.
+4. In `nest-board-host-mfe/`, create a `.env` file and add:
+
+```bash
+VITE_CLERK_PUBLISHABLE_KEY=your_publishable_key_here
+```
+
+Note: `.env` is included in `.gitignore`, so your key will not be committed.
+
+## 2. Install Dependencies and Run the Host Application
 
 ```bash
 git clone git@github.com:abhimax/nest-board-micro-frontends.git
 cd nest-board-host-mfe
-2. Install Dependencies
 npm install
-3. Start the Shell Application
 npm run dev
+```
 
 The shell application will run on:
 
+```bash
 http://localhost:5183
-Running the Remote Map MFE
+```
 
-The shell application depends on the map-remote-mfe application for map-related functionality.
+## 3. Run the Remote Map MFE
+
+The shell application depends on the `map-remore-mfe` application for map-related functionality.
 
 Make sure the remote micro-frontend is also running.
 
 Example:
 
-cd map-remote-mfe
+```bash
+cd map-remore-mfe
 npm install
 npm run build
 npm run preview
+```
 
 Example remote application URL:
 
+```bash
 http://localhost:5184
-Module Federation Integration
+```
+
+## Module Federation Integration
 
 The shell application dynamically loads remote modules at runtime using the Vite Module Federation Plugin.
 
 Architecture flow:
 
 Shell Application (Host)
-        ↓
+↓
 Loads remoteEntry.js
-        ↓
+↓
 Map Remote MFE
-        ↓
+↓
 Renders Map Feature
 
 Benefits of this architecture:
@@ -164,17 +186,20 @@ Repository:
 https://github.com/abhimax/nest-board-api
 
 1. Clone the Backend Repository
-git clone <backend-repo-url>
+   git clone <backend-repo-url>
 2. Go to the Project Folder
-cd <backend-folder>
+   cd <backend-folder>
 3. Install Dependencies
-npm install
+   npm install
 4. Start the Backend Server
-npm start
-Available API Endpoints
-GET /properties
-GET /properties/:id
-POST /properties
-PUT /properties/:id
-DELETE /properties/:id
+   npm start
+   Available API Endpoints
+   GET /properties
+   GET /properties/:id
+   POST /properties
+   PUT /properties/:id
+   DELETE /properties/:id
+
+```
+
 ```
