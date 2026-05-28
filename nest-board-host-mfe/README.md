@@ -6,7 +6,7 @@ This application now follows a **Micro-Frontend Architecture** using **Vite Modu
 
 This repository represents the **Shell / Host Application** of the NestBoard frontend ecosystem.
 
-![NESTBOARD!](public/nest-board-readme-res.jpg)
+![NESTBOARD!](public/nest-board-readme-res.png)
 
 ---
 
@@ -116,6 +116,7 @@ The host app requires Clerk authentication for protected routes such as the dash
 VITE_CLERK_PUBLISHABLE_KEY=your_publishable_key_here
 ```
 
+![NESTBOARD!](public/clerk-auth-info.png)
 Note: `.env` is included in `.gitignore`, so your key will not be committed.
 
 ## 2. Install Dependencies and Run the Host Application
