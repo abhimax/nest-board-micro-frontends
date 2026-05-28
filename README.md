@@ -15,6 +15,37 @@ The experience is built as a runtime integration using Vite Module Federation. T
 - `map-remore-mfe/` — remote micro-frontend for map and location features
 - `nest-board-host-mfe/` — shell/host application for the NestBoard frontend
 
+## Technology Stack
+
+### Host application (`nest-board-host-mfe`)
+
+- React 19 + TypeScript
+- Vite
+- Vite Module Federation Plugin (`@originjs/vite-plugin-federation`)
+- Clerk Authentication
+- Tailwind CSS / `@tailwindcss/vite`
+- Zustand
+- TanStack Query
+- React Router 7
+- shadcn/ui, Radix UI, Lucide icons
+
+### Remote micro-frontend (`map-remore-mfe`)
+
+- React 19 + TypeScript
+- Vite
+- Vite Module Federation Plugin (`@originjs/vite-plugin-federation`)
+- React Router
+- TanStack Query
+- Tailwind CSS
+- Leaflet and React Leaflet
+
+### Backend API (`nest-board-api`)
+
+- Node.js
+- Express
+- CORS
+- In-memory dummy data store
+
 ## High-Level Flow
 
 1. Start the `nest-board-api` backend.
