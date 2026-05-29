@@ -136,14 +136,14 @@ http://localhost:5183
 
 ## 3. Run the Remote Map MFE
 
-The shell application depends on the `map-remore-mfe` application for map-related functionality.
+The shell application depends on the `map-remote-mfe` application for map-related functionality.
 
 Make sure the remote micro-frontend is also running.
 
 Example:
 
 ```bash
-cd map-remore-mfe
+cd map-remote-mfe
 npm install
 npm run build
 npm run preview

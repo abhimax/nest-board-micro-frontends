@@ -4,15 +4,15 @@
 This repository contains the full NestBoard micro-frontend ecosystem, including:
 
 - `nest-board-api` — backend API server used by both frontend applications
-- `map-remore-mfe` — remote micro-frontend that exposes map functionality
+- `map-remote-mfe` — remote micro-frontend that exposes map functionality
 - `nest-board-host-mfe` — host application that loads the remote map micro-frontend at runtime
 
-The experience is built as a runtime integration using Vite Module Federation. The host application fetches the remote micro-frontend from the separate `map-remore-mfe` app, which allows independent development, deployment, and runtime error handling.
+The experience is built as a runtime integration using Vite Module Federation. The host application fetches the remote micro-frontend from the separate `map-remote-mfe` app, which allows independent development, deployment, and runtime error handling.
 
 ## Repository Structure
 
 - `nest-board-api/` — dummy backend API server
-- `map-remore-mfe/` — remote micro-frontend for map and location features
+- `map-remote-mfe/` — remote micro-frontend for map and location features
 - `nest-board-host-mfe/` — shell/host application for the NestBoard frontend
 
 ## Technology Stack
@@ -29,7 +29,7 @@ The experience is built as a runtime integration using Vite Module Federation. T
 - React Router 7
 - shadcn/ui, Radix UI, Lucide icons
 
-### Remote micro-frontend (`map-remore-mfe`)
+### Remote micro-frontend (`map-remote-mfe`)
 
 - React 19 + TypeScript
 - Vite
@@ -49,7 +49,7 @@ The experience is built as a runtime integration using Vite Module Federation. T
 ## High-Level Flow
 
 1. Start the `nest-board-api` backend.
-2. Build and preview the `map-remore-mfe` remote micro-frontend.
+2. Build and preview the `map-remote-mfe` remote micro-frontend.
 3. Start the `nest-board-host-mfe` shell application.
 4. The host app loads the remote map micro-frontend dynamically.
 
@@ -87,7 +87,7 @@ The backend provides REST endpoints for property data, including:
 Open a second terminal and run:
 
 ```bash
-cd map-remore-mfe
+cd map-remote-mfe
 npm install
 npm run build
 npm run preview
@@ -155,7 +155,7 @@ The host app provides:
 
 ## What to Expect in the Host App
 
-- The host app loads the map micro-frontend from `map-remore-mfe` at runtime.
+- The host app loads the map micro-frontend from `map-remote-mfe` at runtime.
 - If the remote micro-frontend is down or unavailable, the host detects the error and displays a fallback error state.
 - A reload button is available so users can reattempt loading the remote app without restarting the host.
 - This demonstrates the value of micro-frontends: independent deployment, runtime integration, and graceful failure handling.
@@ -173,7 +173,7 @@ This project is designed to show a real micro-frontend architecture:
 ## Notes
 
 - `nest-board-api` is a dummy backend; data is stored in memory and resets on restart.
-- `map-remore-mfe` must be built and previewed before the host can load its remote modules correctly.
+- `map-remote-mfe` must be built and previewed before the host can load its remote modules correctly.
 - The host app will still run without the remote, but the map feature will show an error and a reload option.
 
 ## Quick Commands
@@ -183,7 +183,7 @@ This project is designed to show a real micro-frontend architecture:
 cd nest-board-api && npm install && npm start
 
 # Build + preview remote micro-frontend
-cd map-remore-mfe && npm install && npm run build && npm run preview
+cd map-remote-mfe && npm install && npm run build && npm run preview
 
 # Run host shell application
 cd nest-board-host-mfe && npm install && npm run dev
@@ -192,5 +192,5 @@ cd nest-board-host-mfe && npm install && npm run dev
 ## Additional References
 
 - `nest-board-api/README.md` — backend API details
-- `map-remore-mfe/README.md` — remote micro-frontend details
+- `map-remote-mfe/README.md` — remote micro-frontend details
 - `nest-board-host-mfe/README.md` — host application details
